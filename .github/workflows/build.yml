@@ -5,11 +5,6 @@ on:
 jobs:
     build:
         runs-on: self-hosted
-        strategy:
-            fail-fast: true
-            matrix:
-                os: [ ubuntu-lates]
-            max-parallel: 1
         steps:
             -   uses: actions/checkout@v4.1.6
             -   name: Set up JDK 23
@@ -20,4 +15,4 @@ jobs:
                     architecture: x64
                     cache: 'maven'
             -   name: Build with Maven
-                run: mvn --no-transfer-progress verify
+                run: mvnw clean install && mvn --no-transfer-progress verify
