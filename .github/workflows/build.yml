@@ -5,6 +5,9 @@ on:
 jobs:
     build:
         runs-on: self-hosted
+        strategy:
+            fail-fast: true
+            max-parallel: 1
         steps:
             -   uses: actions/checkout@v4.1.6
             -   name: Set up JDK 23
